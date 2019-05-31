@@ -6,6 +6,12 @@ boolean isFeatureBranch = !isPullRequest && "${env.BRANCH_NAME}" != 'master'
 
 pipeline {
   
+  agent {
+    kubernetes {
+      defaultContainer 'default'
+    }
+  }
+  
    stages {
 
     // At least one stage is required.
