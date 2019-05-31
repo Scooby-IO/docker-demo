@@ -17,13 +17,13 @@ pipeline {
     // At least one stage is required.
      stage("Build"){
        steps {
-
+        container('docker') {
          script {
            
           dockerTag = "${appName}-${env.BRANCH_NAME}-${GIT_COMMIT}"
           sh("docker build -t docker-demo .")
           release = "$dockerTag".toLowerCase()
-
+         }
           } //script
          } // steps
        } //stage
