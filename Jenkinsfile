@@ -19,7 +19,8 @@ pipeline {
        steps {
         container('docker') {
          script {
-           
+          sh("docker -v")
+          sh("docker image ls -a")
           dockerTag = "${appName}-${env.BRANCH_NAME}-${GIT_COMMIT}"
           sh("docker build -t docker-demo .")
           release = "$dockerTag".toLowerCase()
